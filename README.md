@@ -17,5 +17,9 @@ A simple web app that analyzes your text in real time. It counts characters, wor
 ![image](https://github.com/user-attachments/assets/83ac919d-bd1a-40be-ae85-7919bbc83a77)
 
 ## Installation
-### Clone
+```bash
+git clone https://github.com/marekbrzostowicz/Text-Analyzer-App.git
+cd character-counter
+npm install
+npm run dev
 
