@@ -3,9 +3,14 @@ import { useEffect, useState } from "react";
 interface Parameters {
   text: string;
   isSpaceChecked: boolean;
+  onWordCountChange: (count: number) => void;
 }
 
-const Parameters = ({ text, isSpaceChecked }: Parameters) => {
+const Parameters = ({
+  text,
+  isSpaceChecked,
+  onWordCountChange,
+}: Parameters) => {
   const [totalCharacters, setTotalCharacters] = useState(0);
   const [words, setWords] = useState(0);
   const [sentenceCount, setSentence] = useState(0);
@@ -26,7 +31,8 @@ const Parameters = ({ text, isSpaceChecked }: Parameters) => {
   useEffect(() => {
     const wordsCount = text.split(/\s+/).filter((word) => word.length > 0);
     setWords(wordsCount.length);
-  }, [text]);
+    onWordCountChange(wordsCount.length);
+  }, [text, onWordCountChange]);
 
   useEffect(() => {
     const trimmedText = text.trim();

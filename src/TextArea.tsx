@@ -3,11 +3,12 @@ import { useState } from "react";
 interface TextAreaProps {
   text: (newValue: string) => void;
   spaces: (value: boolean) => void;
+  readingTime: number;
 }
 
-const TextArea = ({ text, spaces }: TextAreaProps) => {
+const TextArea = ({ text, spaces, readingTime }: TextAreaProps) => {
   const [limitChecked, setIsLimitChecked] = useState(false);
-  const [characterLimit, setCharacterLimit] = useState(0); // Zmieniona nazwa
+  const [characterLimit, setCharacterLimit] = useState(0);
   const [countLetters, setCountLetters] = useState(0);
 
   const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -91,7 +92,7 @@ const TextArea = ({ text, spaces }: TextAreaProps) => {
             ></input>
           </div>
         </div>
-        <p>Approx. reading time: 0 minute</p>
+        <p>Approx. reading time: {readingTime} minute</p>
       </div>
     </>
   );

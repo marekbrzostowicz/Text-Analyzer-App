@@ -7,6 +7,7 @@ import LetterDensity from "./LetterDensity";
 const App = () => {
   const [textValue, setTextValue] = useState("");
   const [isSpaceChecked, setIsSpaceChecked] = useState(false);
+  const [wordCount, setWordCount] = useState(0);
 
   const handleTextAreaInput = (value: string) => {
     setTextValue(value);
@@ -19,8 +20,16 @@ const App = () => {
   return (
     <>
       <Header />
-      <TextArea text={handleTextAreaInput} spaces={handleSpaceInputChange} />
-      <Parameters text={textValue} isSpaceChecked={isSpaceChecked} />
+      <TextArea
+        text={handleTextAreaInput}
+        spaces={handleSpaceInputChange}
+        readingTime={Math.round((wordCount / 200) * 10) / 10}
+      />
+      <Parameters
+        text={textValue}
+        isSpaceChecked={isSpaceChecked}
+        onWordCountChange={setWordCount}
+      />
       <LetterDensity text={textValue} />
     </>
   );
